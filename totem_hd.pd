@@ -1,19 +1,66 @@
-#N canvas 696 314 472 320 10;
-#X obj -93 37 cnv 19 53 19 empty empty empty 20 12 0 14 -228856 -66577
+#N canvas 767 75 674 518 10;
+#X obj -237 226 image images/totem.gif;
+#X obj -516 97 cnv 15 100 19 empty empty Settings 5 10 0 10 -228856
+-66577 0;
+#X obj -526 147 cnv 15 100 19 empty empty Pitchshift 5 10 0 10 -228856
+-66577 0;
+#X obj -496 197 cnv 15 90 19 empty empty Delay 5 10 0 10 -228856 -66577
 0;
-#X obj -91 39 bng 15 250 50 0 reset null RESET 20 8 0 10 -262144 -1
--1;
-#N canvas 508 600 203 120 resources 0;
+#X obj -506 247 cnv 19 100 19 empty empty Reverb 5 10 0 10 -228856
+-66577 0;
+#X obj -455 147 cnv 19 111 19 empty empty empty 20 12 0 14 -261682
+-66577 0;
+#X obj -455 267 cnv 19 69 19 empty empty empty 20 12 0 14 -262130 -66577
+0;
+#X obj -455 97 cnv 19 65 19 empty empty empty 20 12 0 14 -204786 -66577
+0;
+#X obj -455 117 cnv 19 53 19 empty empty empty 20 12 0 14 -204786 -66577
+0;
+#X obj -455 217 cnv 19 69 19 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj -455 197 cnv 19 98 19 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj -455 167 cnv 19 111 19 empty empty empty 20 12 0 14 -261682
+-66577 0;
+#X obj -455 247 cnv 19 69 19 empty empty empty 20 12 0 14 -262130 -66577
+0;
+#X obj -455 287 cnv 19 69 19 empty empty empty 20 12 0 14 -262130 -66577
+0;
+#X obj -450 249 hsl 60 15 0 1 0 0 revdry revdrydef DRY 5 8 0 10 -228856
+-1 -191407 5900 1;
+#X obj -433 199 nbx 4 15 0 5000 0 0 deltime deltimedef TIME 50 8 0
+10 -228856 -1 -1 600 256;
+#X obj -453 199 tgl 15 0 del deldef empty 20 8 0 10 -228856 -1 -1 0
+1;
+#X obj -453 149 tgl 15 0 ps1 ps1def empty -88 8 0 10 -228856 -1 -1
+1 1;
+#X obj -433 149 nbx 3 15 -12 12 0 0 trans1 trans1def INTERVAL 40 8
+0 10 -228856 -1 -1 -3 256;
+#X obj -453 169 tgl 15 0 ps2 ps2def empty -88 8 0 10 -228856 -1 -1
+1 1;
+#X obj -433 169 nbx 3 15 -12 12 0 0 trans2 trans2def INTERVAL 40 8
+0 10 -228856 -1 -1 7 256;
+#X obj -450 269 hsl 60 15 0 1 0 0 revwet revwetdef WET 5 8 0 10 -228856
+-1 -191407 0 1;
+#X obj -450 289 hsl 60 15 0 1 0 0 revroom revroomdef SIZE 5 8 0 10
+-228856 -1 -191407 5310 1;
+#X obj -453 119 bng 15 250 50 0 reset null RESET 20 8 0 10 -262144
+-1 -1;
+#X obj -453 99 bng 15 250 50 0 preset null DEFAULT 20 8 0 10 -262144
+-1 -1;
+#X obj -450 219 hsl 60 15 0 1 0 0 delxfade delxfadedef DRY/WET 5 8
+0 10 -228856 -1 -191407 0 1;
+#N canvas 508 600 203 120 resources 1;
 #N canvas 368 227 214 249 pitshifters 0;
 #X obj 31 58 spigot~;
-#X obj 80 23 tgl 15 0 empty ps1 empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 80 23 tgl 15 0 empty ps1 empty 17 7 0 10 -262144 -1 -1 1 1;
 #X obj 31 85 pitchshifter~;
 #X msg 106 63 transpose \$1;
 #X floatatom 106 42 5 0 0 0 - trans1 -;
 #X obj 31 36 r~ aux;
 #X obj 31 107 s~ ps1;
 #X obj 32 163 spigot~;
-#X obj 81 128 tgl 15 0 empty ps2 empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 81 128 tgl 15 0 empty ps2 empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X obj 32 190 pitchshifter~;
 #X msg 107 168 transpose \$1;
@@ -39,10 +86,10 @@
 -16662 -1 0 1;
 #X msg 181 35 wet \$1;
 #X obj 244 15 hsl 30 15 0 1 0 0 empty revdry empty -2 -8 0 10 -203904
--16662 -1 0 1;
+-16662 -1 2900 1;
 #X msg 241 35 dry \$1;
 #X obj 304 15 hsl 30 15 0 1 0 0 empty revroom empty -2 -8 0 10 -203904
--16662 -1 0 1;
+-16662 -1 2610 1;
 #X msg 301 35 roomsize \$1;
 #X obj 77 -24 r~ prcsd;
 #X obj 99 79 *~ 0.5;
@@ -208,7 +255,7 @@
 #X connect 12 0 0 2;
 #X connect 12 0 0 3;
 #X restore 83 46 pd delay;
-#N canvas 241 73 711 605 stutter 0;
+#N canvas 241 73 711 605 stutter 1;
 #X floatatom 127 198 12 0 0 0 - - -;
 #X obj 215 203 expr 44100 / $f1;
 #X obj 127 219 s sampleSize;
@@ -229,13 +276,13 @@
 #X obj 492 322 r sampleSize;
 #X floatatom 380 361 5 0 0 0 - - -;
 #X obj 383 231 hsl 195 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 17501 1;
 #X msg 337 223 0;
 #X obj 294 -66 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 294 -46 metro;
 #X obj 294 14 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144 -1
--1 4;
+-1 0;
 #X obj 294 -14 drunk 4;
 #X floatatom 380 -62 5 0 0 1 - stutterbpm -;
 #X floatatom 380 56 5 0 0 0 - - -;
@@ -244,7 +291,7 @@
 #X floatatom 540 -7 5 0 0 0 - - -;
 #X obj 294 94 random 100;
 #X obj 294 114 / 100;
-#X obj 294 52 tgl 15 0 empty stutter Glitch 17 7 0 10 -4034 -1 -1 0
+#X obj 294 52 tgl 15 0 empty stutter Glitch 17 7 0 10 -4034 -1 -1 1
 1;
 #X obj 294 72 metro;
 #X floatatom 380 -7 5 0 0 0 - - -;
@@ -353,26 +400,26 @@
 #N canvas 194 87 546 338 routing 0;
 #X obj -35 271 s~ aux;
 #X obj 10 66 vsl 15 128 0 1 0 0 empty micvol empty 0 -8 0 8 -204800
--13330 -1 0 1;
+-13330 -1 11430 1;
 #X floatatom 10 208 5 0 0 0 - - -;
 #X obj -15 234 *~;
 #X obj 80 66 vsl 15 128 0 1 0 0 empty ps1vol empty 0 -8 0 8 -204786
--13381 -1 0 1;
+-13381 -1 11430 1;
 #X floatatom 80 208 5 0 0 0 - - -;
 #X obj 55 234 *~;
 #X obj 55 27 r~ ps1;
 #X obj 150 66 vsl 15 128 0 1 0 0 empty ps2vol empty 0 -8 0 8 -204786
--13381 -1 0 1;
+-13381 -1 11430 1;
 #X floatatom 150 208 5 0 0 0 - - -;
 #X obj 125 234 *~;
 #X obj 125 27 r~ ps2;
 #X obj 220 66 vsl 15 128 0 1 0 0 empty delvol empty 0 -8 0 8 -204786
--13381 -1 0 1;
+-13381 -1 11430 1;
 #X floatatom 220 208 5 0 0 0 - - -;
 #X obj 195 234 *~;
 #X obj 195 27 r~ del;
 #X obj 360 66 vsl 15 128 0 1 0 0 empty stuttervol empty 0 -8 0 8 -262130
--83269 -1 0 1;
+-83269 -1 11430 1;
 #X floatatom 360 208 5 0 0 0 - - -;
 #X obj 335 234 *~;
 #X obj 125 301 s~ prcsd;
@@ -387,13 +434,13 @@
 #X obj 335 27 r~ stutter;
 #X obj 405 274 dac~;
 #X obj 430 66 vsl 15 128 0 1 0 0 empty mastervol empty 0 -8 0 8 -261234
--83269 -1 0 1;
+-83269 -1 7620 1;
 #X floatatom 430 208 5 0 0 0 - - -;
 #X obj 405 234 *~;
 #X obj 405 27 r~ mstr;
 #X obj -74 54 spigot~;
 #X obj 10 27 tgl 15 0 empty micswitch empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj -35 115 *~ 1;
 #X connect 1 0 2 0;
 #X connect 2 0 3 1;
@@ -518,74 +565,38 @@
 #X connect 35 0 30 0;
 #X connect 35 1 34 0;
 #X restore 135 46 pd 8bit;
-#X restore 124 159 pd resources;
-#X obj 54 -117 cnv 15 1 1 empty empty TOTEM 0 48 0 36 -262144 -1 0
-;
-#X obj 172 -82 tgl 27 0 micswitch micswitchdef mic 7 -8 0 10 -262144
--33289 -1 0 1;
-#X obj -219 37 cnv 15 19 19 empty empty Settings 5 10 0 10 -262144
+#X restore -4 438 pd resources;
+#X obj -573 -29 cnv 15 1 1 empty empty TOTEM 75 75 0 36 -262144 -262144
+0;
+#X obj -506 317 cnv 15 90 19 empty empty Stutter 5 10 0 10 -228856
 -66577 0;
-#X obj -159 37 cnv 19 65 19 empty empty empty 20 12 0 14 -228856 -66577
+#X obj -455 317 cnv 19 92 19 empty empty empty 20 12 0 14 -203904 -66577
 0;
-#X obj -157 39 bng 15 250 50 0 preset null DEFAULT 20 8 0 10 -262144
--1 -1;
-#X obj -230 57 cnv 15 15 15 empty empty Pitchshift 5 10 0 10 -262144
--66577 0;
-#X obj -200 77 cnv 15 15 15 empty empty Delay 5 10 0 10 -262144 -66577
+#X obj -453 319 tgl 15 0 stutter stutterdef empty 20 8 0 10 -228856
+-1 -1 1 1;
+#X obj 32 397 cnv 15 40 15 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj -206 97 cnv 19 15 15 empty empty Reverb 5 10 0 10 -262144 -66577
+#X obj 16 397 bng 15 250 50 0 panic null PANIC! 20 8 0 10 -258113 -261234
+-86277;
+#X obj 32 413 cnv 15 40 15 empty empty empty 20 12 0 14 -204786 -66577
 0;
-#X obj -159 57 cnv 19 111 19 empty empty empty 20 12 0 14 -261682 -66577
+#X obj 16 413 bng 15 250 50 0 relax null Relax. 20 8 0 10 -4034 -204786
+-13381;
+#X obj -496 387 cnv 15 90 19 empty empty 8-Bit 5 10 0 10 -228856 -66577
 0;
-#X obj -89 97 cnv 19 69 19 empty empty empty 20 12 0 14 -262130 -66577
+#X obj -455 387 cnv 19 54 19 empty empty empty 20 12 0 14 -232576 -66577
 0;
-#X obj -47 57 cnv 19 111 19 empty empty empty 20 12 0 14 -261682 -66577
-0;
-#X obj -159 97 cnv 19 69 19 empty empty empty 20 12 0 14 -262130 -66577
-0;
-#X obj -20 97 cnv 19 69 19 empty empty empty 20 12 0 14 -262130 -66577
-0;
-#X obj -154 99 hsl 60 15 0 1 0 0 revdry revdrydef DRY 5 8 0 10 -228856
--1 -191407 0 1;
-#X obj -157 59 tgl 15 0 ps1 ps1def empty -88 8 0 10 -228856 -1 -1 0
-1;
-#X obj -137 59 nbx 3 15 -12 12 0 0 trans1 trans1def INTERVAL 40 8 0
-10 -228856 -1 -1 0 256;
-#X obj -45 59 tgl 15 0 ps2 ps2def empty -88 8 0 10 -228856 -1 -1 0
-1;
-#X obj -25 59 nbx 3 15 -12 12 0 0 trans2 trans2def INTERVAL 40 8 0
-10 -228856 -1 -1 0 256;
-#X obj -84 99 hsl 60 15 0 1 0 0 revwet revwetdef WET 5 8 0 10 -228856
--1 -191407 0 1;
-#X obj -15 99 hsl 60 15 0 1 0 0 revroom revroomdef SIZE 5 8 0 10 -228856
--1 -191407 0 1;
-#X obj -211 117 cnv 15 15 15 empty empty Stutter 5 10 0 10 -262144
--66577 0;
-#X obj -160 117 cnv 19 92 19 empty empty empty 20 12 0 14 -203904 -66577
-0;
-#X obj -158 119 tgl 15 0 stutter stutterdef empty 20 8 0 10 -228856
--1 -1 0 1;
-#X obj -199 137 cnv 15 15 15 empty empty 8-Bit 5 10 0 10 -262144 -66577
-0;
-#X obj -160 137 cnv 19 54 19 empty empty empty 20 12 0 14 -232576 -66577
-0;
-#X obj -158 139 tgl 15 0 8bit 8bitdef 8-BIT 20 8 0 10 -228856 -1 -1
+#X obj -453 389 tgl 15 0 8bit 8bitdef 8-BIT 20 8 0 10 -228856 -1 -1
 0 1;
-#X obj -138 119 nbx 4 15 0 5000 0 0 stutterbpm stutterbpmdef BPM 50
-8 0 10 -228856 -1 -1 0 256;
-#X obj -67 117 cnv 19 72 19 empty empty empty 20 12 0 14 -203904 -66577
+#X obj -433 319 nbx 4 15 0 5000 0 0 stutterbpm stutterbpmdef BPM 50
+8 0 10 -228856 -1 -1 832 256;
+#X obj -384 32 tgl 30 0 micswitch micswitchdef mic 7 -8 0 10 -262144
+-33289 -262144 1 1;
+#X obj -455 357 cnv 19 53 19 empty empty empty 20 12 0 14 -203904 -66577
 0;
-#X obj -65 119 tgl 15 0 stutterctrl_def stutterctrl REC/PLAY 20 8 0
-10 -228856 -1 -1 0 1;
-#X obj -60 77 cnv 19 69 19 empty empty empty 20 12 0 14 -261234 -66577
+#X obj -453 359 bng 15 250 50 0 stutterclear null RESET 20 8 0 10 -262144
+-1 -1;
+#X obj -455 337 cnv 19 72 19 empty empty empty 20 12 0 14 -203904 -66577
 0;
-#X obj -159 77 cnv 19 98 19 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X obj -137 79 nbx 4 15 0 5000 0 0 deltime deltimedef TIME 50 8 0 10
--228856 -1 -1 0 256;
-#X obj -157 79 tgl 15 0 del deldef empty 20 8 0 10 -228856 -1 -1 0
-1;
-#X obj -55 79 hsl 60 15 0 1 0 0 delxfade delxfadedef DRY/WET 5 8 0
-10 -228856 -1 -191407 0 1;
-#X text 20 -36 real-time audio effects engine;
-#X text 56 -23 for acoustic instruments;
+#X obj -453 339 tgl 15 0 stutterctrl_def stutterctrl REC/PLAY 20 8
+0 10 -228856 -1 -1 0 1;
